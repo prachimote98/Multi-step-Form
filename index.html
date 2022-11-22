@@ -1,0 +1,170 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Registraion Form</title>
+  </head>
+  <body>
+    <form action="#" class="form">
+      <h1 class="text-center">Registration Form</h1>
+      
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        
+        <div
+          class="progress-step progress-step-active"
+          data-title="Intro"
+        ></div>
+        <div class="progress-step" data-title="Subjects"></div>
+        <div class="progress-step" data-title="Email"></div>
+        <div class="progress-step" data-title="Contact Number"></div>
+      </div>
+
+      <div class="form-step form-step-active">
+        <div class="input-group">
+          <label for="studentname">Student Name</label>
+          <input type="text" name="studentname" id="studentname" />
+        </div>
+        <div class="input-group">
+          <label for="Student School">Student School</label>
+          <input type="text" name="studentschool" id="studentschool" />
+        </div>
+        <div class="input-group">
+          <label for="studentstandard">Student Standard</label>
+          <input type="text" name="studentstandard" id="studentstandard" />
+        </div>
+        <div class="input-group">
+          <label for="gender">Gender</label>
+          <input type="text" name="gender" id="gender" />
+        </div>
+        <div class="">
+          <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="subject">Subjects</label>
+          <input type="text" name="subject" id="subject" />
+       
+        </div>
+        
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" />
+        </div>
+      
+        <div class="input-group">
+          <label for="confirmEmail">Confirm Email</label>
+          <input
+            type="Email"
+            name="confirmEmail"
+            id="confirmEmail"
+          />
+        </div>
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <a href="#" class="btn btn-next">Next</a>
+      </div>  </div>
+      <div class="form-step">
+        <div class="input-group">
+          <label for="contactNo">Contact Number</label>
+          <input type="contactNo" name="contactNo" id="ContactNo" />
+        </div>
+        <div class="input-group">
+          <label for="confirmContactNo">Confirm Contact Number</label>
+          <input
+            type="ContctNo"
+            name="confirmContactNo"
+            id="confirmContactNo"
+          />
+        </div>
+       
+  
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Previous</a>
+          <input type="submit" value="Submit"  onClick="SubmitRow()" class="btn" />
+        </div>
+      </div>
+      </form>
+    </form>
+    <table border="3" id="show">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Subjects</th>
+          <th>Email</th>
+          <th>ContactNo</th>
+        </tr>
+      </thead>
+    </table>
+   
+    <script>
+      // function SubmitRow(){
+      //   var x =document.getElementById("studentname").value;
+      //   var y =document.getElementById("subjects").value;
+      //   var z =document.getElementById("email").value;
+      //   var w =document.getElementById("contactno").value;
+      //   alert(x+y+z+w);
+      //   var d1=document.getElementById("d1");
+      //   d1.innerHTML="<table border=2><tr><td>StudentName</td><td>"+x+"</td></tr><tr><td> Subjects</td><td>"+y+"</td></tr><tr><td> email</td><td>"+z+"</td></tr><tr><td> contactno</td><td>"
+      //   }
+      
+
+      
+    const scriptURL='https://script.google.com/macros/s/AKfycbyqNQTLasXrgdajTgkCYpFmYvQ4KQ24kgOyVXpjK1PNvN6WnXL_M-iFPtgSs0Z6wnUGLg/exec'
+    const form=document.form['Sheet1']
+
+    form.addEventListener('Submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => document.getElementById("demo").innerHTML = "<div class='alert alert-primary' role='alert'><b>Thank You for providing the details, We shall get back to you shortly !</b></div>",contact.reset())
+                .catch(error => console.error('Error!', error.message))
+            })
+
+    var list1= [];
+    var list2= [];
+    var list3= [];
+    var list4= [];
+    
+     var n= 1;
+     var x=0;
+    
+     function SubmitRow(){
+    
+      var SubmitRown=document.getElementById('show');
+      var NewRow=AddRown.insertRow(n);
+    
+      list1[x]=document.getElementById("studentname").value;
+      list2[x]=document.getElementById("subjects").value;
+      list3[x]=document.getElementById("email").value;
+      list4[x]=document.getElementById("contactNo").value;
+    
+      var cel1=NewRow.insertCell(0);
+      var cel2=NewRow.insertCel2(1);
+      var cel3=NewRow.insertCel3(3);
+      var cel4=NewRow.insertCel4(4);
+    
+      cel1.innerHtml=list1[x];
+      cel2.innerHtml=list2[x];
+      cel3.innerHtml=list3[x];
+      cel4.innerHtml=list4[x];
+      n++;
+      x++;
+    
+     }
+     
+     </script>    
+  </body>
+</html>
+
+
+
